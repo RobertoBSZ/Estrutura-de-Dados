@@ -3,16 +3,11 @@
 #include <string.h>
 #include <math.h>
 
-/*typedef struct aluno {
-  int matricula;
-  char nome[30];
-  float nota;
-}aluno;*/
-
-float calcula_forma_area(int tipo){
-    float valor, a, b, c;
+float calcula_forma(int tipo, int y){
+    float valor, a, b, c, d;
     
-    switch(tipo){
+    if(y == 1){
+        switch(tipo){
         case 1:
             printf("Defina a base do triangulo:");
             scanf("%f", &b);
@@ -55,13 +50,10 @@ float calcula_forma_area(int tipo){
             
             valor = ((a+b)*c)/2;
             return valor;
-    };
-}
-
-float calcula_forma_perimetro(int tipo){
-    float valor, a, b, c, d;
-    
-    switch(tipo){
+        };
+    }
+    else{
+        switch(tipo){
         case 1:
             printf("Defina o 1º lado do triangulo:");
             scanf("%f", &a);
@@ -110,34 +102,10 @@ float calcula_forma_perimetro(int tipo){
             
             valor = a+b+c+d;
             return valor;
-    };
-}
-/*
-float area_quadrado (float l){
-
-    return resultado = l*l;
-};
-
-float area_triangulo (float b, float h){
+        };
+    }
     
-    float resultado;
-    return resultado = (b*h)/2;
-};
-
-float area_retangulo (float b, float h){
-    float resultado;
-    return resultado = b*h;
-};
-
-float area_trapezio (float bm, float bn, float h){
-    float resultado;
-    return resultado = 3,14*(x*x);
-};
-
-float area_circulo (float r){
-    float resultado;
-    return resultado = 3,14*(r*r);
-};*/
+}
 
 typedef struct forma {
     int tipo;
@@ -147,14 +115,7 @@ typedef struct forma {
 
 int main()
 {
-    /*
-    struct aluno x = {2, "João"};
-    
-    printf("Digite a nota do Aluno %s, de matricula %d\n", x.nome, x.matricula);
-    scanf("%f", &x.nota);
-    
-    printf("\nO aluno %s, de matrícula %d, tem a nota %.1f", x.nome, x.matricula, x.nota);
-*/
+
     float resultado;
     int t;
     struct forma x;
@@ -165,23 +126,15 @@ int main()
     printf("Escolha o que você quer calcular:\n1-area\n2-perimetro\n");
     scanf("%i", &t);
     
+    resultado = calcula_forma(x.tipo, t);
+    x.area = resultado;
+    x.perimetro = resultado;
+    
     if(t == 1){
-        resultado = calcula_forma_area(x.tipo);
-        x.area = resultado;
         printf("Área= %.1f\n", x.area);
     }else{
-        resultado = calcula_forma_perimetro(x.tipo);
-        x.perimetro = resultado;
         printf("Perimetro= %.1f", x.perimetro);
     };
-    
-    
-    
-    
-    
-    
-    
-    
     
     return 0;
 }
